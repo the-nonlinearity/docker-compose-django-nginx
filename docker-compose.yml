@@ -7,13 +7,20 @@ services:
     container_name: django-backend
     volumes:
       - ./backend/:/app/src # maps host directory to internal container directory
+      - static_volume:/app/src/static
+      - media_volume:/app/src/media
     networks:
       - nginx_network
+      - postgres_network
+    depends_on:
+      - postgres
 
   nginx:
     image: nginx:1.13
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/app/src/static
+      - media_volume:/app/src/media
     ports:
       - 8000:80
     depends_on:
@@ -21,6 +28,22 @@ services:
     networks:
       - nginx_network
 
+  postgres:
+    image: postgres:12
+    env_file:
+      - env.db
+    networks:
+      - postgres_network
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+
 networks:
   nginx_network:
     driver: bridge
+  postgres_network:
+    driver: bridge
+
+volumes:
+  postgres_volume:
+  static_volume:
+  media_volume:
