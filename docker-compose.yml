@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: django-backend
+    volumes:
+      - ./backend/:/app/src # maps host directory to internal container directory
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx:1.13
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 8000:80
+    depends_on:
+      - backend
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
