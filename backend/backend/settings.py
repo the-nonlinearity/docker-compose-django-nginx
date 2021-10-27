@@ -128,8 +128,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# as declared in NginX conf, it must match /opt/services/djangoapp/static/
+# as declared in NginX conf, it must match /app/static/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# do the same for media files, it must match /opt/services/djangoapp/media/
+# do the same for media files, it must match /app/media/
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
