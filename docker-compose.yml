@@ -5,6 +5,8 @@ services:
   backend:
     build: ./backend
     container_name: django-backend
+    stdin_open: true
+    tty: true
     volumes:
       - ./backend/:/app/src # maps host directory to internal container directory
       - static_volume:/app/src/static

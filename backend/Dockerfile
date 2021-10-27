@@ -6,7 +6,6 @@ WORKDIR /app/src/
 
 # install our two dependencies
 ADD requirements.txt /app/src/
-RUN pip install gevent gunicorn
 RUN pip install -r requirements.txt
 
 # copy our project code
@@ -16,4 +15,5 @@ COPY . /app/src/
 EXPOSE 8000
 
 # define the default command to run when starting the container
-CMD ["gunicorn", "--bind", ":8000", "backend.wsgi:application"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["gunicorn", "--bind", ":8000", "backend.wsgi:application"]
