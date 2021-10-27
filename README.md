@@ -115,7 +115,7 @@ to start our composition with Docker Compose and `docker-compose.yml`. Create yo
 We are gonna use the version 3 of the configuration syntax. First, we add the Django+Gunicorn 
 service:
 
-```dockerfile
+```yaml
 version: '3'
 
 services:
@@ -146,7 +146,7 @@ communicate.
 
 Update the `docker-compose.yml` as follows:
 
-```dockerfile
+```yaml
 version: '3'
 
 services:
@@ -273,7 +273,7 @@ these values, remember to also change them in the `DATABASES` setting.
 We are now ready to add our service in `docker-compose.yml`. The added service must have the 
 same name than what is declared in the `DATABASES` setting:
 
-```dockerfile
+```yaml
 version: '3'
 
 services:
@@ -387,7 +387,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 Add the corresponding volumes in `docker-compose.yml`:
 
-```dockerfile 
+```yaml 
 version: '3'
 
 services:
@@ -454,3 +454,8 @@ Here are the resources I used to write this tutorial:
 [Django tutorial using Docker, Nginx, Gunicorn and PostgreSQL](https://github.com/andrecp/django-tutorial-docker-nginx-postgres)
 [Deploy Django, Gunicorn, NGINX, Postgresql using Docker](https://ruddra.com/docker-django-nginx-postgres/)
 [Docker, how to expose a socket over a port for a Django Application](https://stackoverflow.com/questions/32180589/docker-how-to-expose-a-socket-over-a-port-for-a-django-application)
+
+
+## You have multiple github accounts: now what?
+
+[Debug ssh access](https://support.atlassian.com/bitbucket-cloud/docs/troubleshoot-ssh-issues/)
